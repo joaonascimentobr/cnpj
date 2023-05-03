@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Validador de CNPJ</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="validarCNPJ.js"></script>
+    <script>
+      $(document).ready(function(){
+          $('#cnpj').mask('00.000.000/0000-00');
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <form action="javascript:void(0);">
+        <h1 class="text-center mt-3">Validador de CNPJ</h1>
+        <div class="form-group">
+          <label for="cnpj">Digite o CNPJ:</label>
+          <input type="text" id="cnpj" name="cnpj" class="form-control cnpj" inputmode="numeric" placeholder="Digite aqui o CNPJ" maxlength="18" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" onclick="validarCNPJ()">Validar</button>
+        <p id="resultado" class="text-center mt-3"></p>
+      </form>
+    </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

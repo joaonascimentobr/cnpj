@@ -1,0 +1,10 @@
+.container {
+	margin-top: 20px;
+}
+td {
+	padding: 10px;
+	border: 1px solid #ddd;
+}
+td button {
+	margin-left: 10px;
+}

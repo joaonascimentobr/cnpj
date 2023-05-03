@@ -1,0 +1,29 @@
+.form-group label {
+  font-weight: bold;
+}
+
+.cnpj {
+  font-size: 24px;
+  margin-left: 5px;
+  text-align: center;
+}
+
+.cnpj::placeholder {
+  content: "__.___.___/____-__";
+}
+
+.cnpj::-webkit-input-placeholder {
+  content: "__.___.___/____-__";
+}
+
+.cnpj::-moz-placeholder {
+  content: "__.___.___/____-__";
+}
+
+.cnpj:-ms-input-placeholder {
+  content: "__.___.___/____-__";
+}
+
+.cnpj::-ms-input-placeholder {
+  content: "__.___.___/____-__";
+}
