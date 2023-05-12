@@ -1,9 +1,14 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const dados = [
-      { cnpj: '12.345.678/0001-01' },
-      { cnpj: '98.765.432/0001-21' },
-      { cnpj: '55.555.555/0001-55' }
+document.addEventListener('DOMContentLoaded', async () => {
+    let dados = [
+        { nome: "Nenhuma empresa cadastrada", cnpj: ''}
     ];
+    async function logJSONData() {
+        const response = await fetch("https://teste23424.herokuapp.com/v1/empresa");
+        const jsonData = await response.json();
+        console.log(jsonData);
+        dados = jsonData.data
+    }
+    await logJSONData();
     gerarTabela(dados);
   });
 

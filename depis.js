@@ -21,6 +21,9 @@ addCnpjBtn.addEventListener('click', () => {
   const mockCNPJs = JSON.parse(localStorage.getItem('mockCNPJs')) || [];
 
   mockCNPJs.push(newCnpj);
+
+
+
   localStorage.setItem('mockCNPJs', JSON.stringify(mockCNPJs));
 
   renderTable();
