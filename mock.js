@@ -1,7 +1,9 @@
+
+let dados = [
+    { nome: "Nenhuma empresa cadastrada", cnpj: ''}
+];
 document.addEventListener('DOMContentLoaded', async () => {
-    let dados = [
-        { nome: "Nenhuma empresa cadastrada", cnpj: ''}
-    ];
+
     async function logJSONData() {
         const response = await fetch("https://teste23424.herokuapp.com/v1/empresa");
         const jsonData = await response.json();
@@ -12,4 +14,3 @@ document.addEventListener('DOMContentLoaded', async () => {
     gerarTabela(dados);
   });
 
-  

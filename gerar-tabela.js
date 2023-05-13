@@ -1,13 +1,8 @@
-
 const cadastroForm = document.getElementById('form');
 
-
-const btEnviar = document.querySelector('.btn_enviar');
+const btEnviar = document.getElementById('btn_enviar');
 
 console.log(cadastroForm);
-
-
-
 
 async function addCnpj(event) {
     event.preventDefault();
@@ -21,25 +16,67 @@ async function addCnpj(event) {
 }
 
 async function adicionaEmpresa(nome, cnpj) {
-    try {
-        const response = await fetch("https://teste23424.herokuapp.com/v1/empresa", 
-          {
-            method: "POST",
-            headers: {
-              'Content-Type': 'application/json'
-            }, 
-            body: JSON.stringify({
-              nome: nome,
-              cnpj: cnpj,
-            })
-          }
-        );
 
-        // 2 etapa adicionar ao html na hora
-    } catch {
-        console.log("deu merda2")
-    }
-  const responseJson = await response.json();
+// let dados = JSON.stringify({
+//   nome: nome,
+//   cnpj: cnpj
+// })
+// console.log("dados",dados);
+
+//   $.ajax({
+//     url: 'https://teste23424.herokuapp.com/v1/empresa',
+//     type: "POST",
+//     data: dados,
+//     success: function(data) {
+//       mostrarToast();
+//       //2 etapa adicionar ao html na hora
+//       dados.push({nome:nome, id:id});
+//       console.log(dados);
+//       gerarTabela(dados);
+//     },
+//     error: function(jqXHR, textStatus, errorThrown) {
+      
+//       console.log(textStatus, errorThrown);
+//     }
+//   });
+
+  let hedears = {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    }, 
+    body: JSON.stringify({
+      nome: nome,
+      cnpj: cnpj,
+    })
+  };
+
+  fetch('https://teste23424.herokuapp.com/v1/empresa', hedears)
+  .then(response => {
+    response.json()
+    // response.json()
+    mostrarToast();
+    //2 etapa adicionar ao html na hora
+    dados.push({nome:nome, id:id});
+    console.log(dados);
+    gerarTabela(dados);
+  })
+  // .then(data => {
+  //   mostrarToast();
+  //   //2 etapa adicionar ao html na hora
+  //   dados.push({nome:nome, id:id});
+  //   console.log(dados);
+  //   gerarTabela(dados);
+  // })
+  .catch(error => {
+    console.error(error);
+  });
+}
+
+function mostrarToast() {
+  var toast = new bootstrap.Toast(document.getElementById('toast'))
+  
+  toast.show()
 }
 
 function gerarTabela(dados) {
