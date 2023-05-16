@@ -92,8 +92,11 @@ function gerarTabela(dados) {
       btnRemover.classList.add('btn', 'btn-danger', 'btn-sm');
       btnRemover.innerHTML = '<i class="fas fa-trash-alt"></i>';
       btnRemover.addEventListener('click', async () => {
-        await excluirEmpresa(dados[i].id);
-        tr.remove();
+        let excluir = confirm("Tem certeza que deseja excluir?")
+        if (excluir) {
+          await excluirEmpresa(dados[i].id);
+           tr.remove();
+        }
       });
       tdCnpj.textContent = dados[i].cnpj;
       tdAcao.appendChild(btnRemover);
