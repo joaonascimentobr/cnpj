@@ -118,3 +118,9 @@ async function excluirEmpresa(id) {
     console.log("deu merda")
   }
 }
+
+// d-none
+
+let spinnerLoading = document.getElementById("loadingEnviar");
+spinnerLoading.classList.add("d-none");
+spinnerLoading.classList.remove("d-none");
