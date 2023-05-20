@@ -1,8 +1,7 @@
-const cadastroForm = document.getElementById('form');
 
 const btEnviar = document.getElementById('btn_enviar');
+const spinner = document.getElementById('spinner');
 
-console.log(cadastroForm);
 
 async function addCnpj(event) {
     event.preventDefault();
@@ -77,7 +76,7 @@ function mostrarToast() {
   var toast = new bootstrap.Toast(document.getElementById('toast'))
   
   toast.show()
-}
+};
 
 function gerarTabela(dados) {
     const tbody = document.querySelector('tbody');
@@ -105,8 +104,7 @@ function gerarTabela(dados) {
       tr.appendChild(tdAcao);
       tbody.appendChild(tr);
     }
-  }
-
+  };
 async function excluirEmpresa(id) {
   try {
     const response = await fetch("https://teste23424.herokuapp.com/v1/empresa/" + id, {method: "DELETE"});
@@ -117,10 +115,12 @@ async function excluirEmpresa(id) {
   } catch(error) {
     console.log("deu merda")
   }
-}
+};
 
 // d-none
 
-let spinnerLoading = document.getElementById("loadingEnviar");
-spinnerLoading.classList.add("d-none");
-spinnerLoading.classList.remove("d-none");
+spinner.classList.add("d-none");
+
+// spinnerLoading.classList.remove("d-none");
+
+console.log('sdfasdfasdfsdfasdfs')
