@@ -13,9 +13,9 @@ function loadingData() {
     let url = urlBase + 'v1/empresa';
     $.ajax({
         url: url,
-        dataType: 'json',
+        dataType: 'jsonp',
         type: "GET",
-        contentType: 'application/json',
+        // contentType: 'application/json',
         success: function (response) {
             dados = response.data;
             gerarTabela(dados);
@@ -31,9 +31,9 @@ function excluirEmpresa(id, complete) {
     let url = urlBase + "v1/empresa/" + id;
     $.ajax({
         url: url,
-        dataType: 'json',
+        dataType: 'jsonp',
         type: "DELETE",
-        contentType: 'application/json',
+        // contentType: 'application/json',
         success: function (data) {
             mostrarToastEmpresaExcluida();
             loadingData();
@@ -53,9 +53,9 @@ function adicionaEmpresa(nome, cnpj) {
     showLoadingInSendButton();
     $.ajax({
         url: url,
-        dataType: 'json',
+        dataType: 'jsonp',
         type: "POST",
-        contentType: 'application/json',
+        // contentType: 'application/json',
         data: JSON.stringify({
             nome: nome,
             cnpj: cnpj

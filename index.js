@@ -59,7 +59,7 @@ function gerarTabela(dados) {
 
     if (dados.length == 0) {
       console.log("entrou");
-      noItens.classList.remove('d-none')
+      noItens.classList.remove('d-none');
     } else {
       noItens.classList.add("d-none");
       console.log("nEntrou");
