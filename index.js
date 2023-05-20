@@ -4,11 +4,10 @@ const spinner = document.getElementById('spinner');
 const nameInput = document.querySelector('#name');
 const cnpjInput = document.querySelector('#cnpj');
 
-async function addCnpj(event) {
+function addCnpj(event) {
     event.preventDefault();
     const td = document.querySelector('td');
-
-    await adicionaEmpresa(nameInput.value, cnpjInput.value);
+    adicionaEmpresa(nameInput.value, cnpjInput.value);
 }
 
 function mostrarToastSucesso() {
@@ -40,8 +39,10 @@ function gerarTabela(dados) {
       btnRemover.innerHTML = '<i class="fas fa-trash-alt"></i>';
       btnRemover.addEventListener('click', async () => {
         btnRemover.innerHTML = '<span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>';
-        await removeCompany(dados[i].id, tr);
-        btnRemover.innerHTML = '<i class="fas fa-trash-alt"></i>';
+        removeCompany(dados[i].id, tr, () => {
+          btnRemover.innerHTML = '<i class="fas fa-trash-alt"></i>';
+          tr.remove()
+        });
       });
       tdCnpj.textContent = dados[i].cnpj;
       tdAcao.appendChild(btnRemover);
@@ -52,11 +53,10 @@ function gerarTabela(dados) {
     }
   };
 
-async function removeCompany(id, tr) {
+function removeCompany(id, tr, complete) {
   let excluir = confirm("Tem certeza que deseja excluir?");
   if (excluir) {
-    await excluirEmpresa(id);
-     tr.remove();
+    excluirEmpresa(id, complete);
   }
 };
 
@@ -70,8 +70,6 @@ function hideLoadingInSendButton() {
   spinner.classList.add("d-none");
   btEnviar.disabled = false;
 };
-
-
 
 hideLoadingInSendButton();
 

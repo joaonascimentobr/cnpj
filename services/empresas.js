@@ -1,5 +1,5 @@
 var dados = [
-    { nome: "Nenhuma empresa cadastrada", cnpj: '' }
+    { nome: "Carregando empresas...", cnpj: '' }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,7 +25,7 @@ function loadingData() {
     });
 }
 
-async function excluirEmpresa(id) {
+function excluirEmpresa(id, complete) {
     let url = urlBase + "v1/empresa/" + id;
     $.ajax({
         url: url,
@@ -41,13 +41,12 @@ async function excluirEmpresa(id) {
         },
         complete: () => {
             hideLoadingInSendButton();
+            complete();
         }
     });
-
-    mostrarToastEmpresa();
 };
 
-async function adicionaEmpresa(nome, cnpj) {
+function adicionaEmpresa(nome, cnpj) {
     let url = urlBase +  'v1/empresa';
     showLoadingInSendButton();
     $.ajax({
