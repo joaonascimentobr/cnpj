@@ -7,8 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
     loadingData();
 });
 
+let urlBase = "https://empresas-w894.onrender.com/";
+
 function loadingData() {
-    let url = 'https://teste23424.herokuapp.com/v1/empresa';
+    let url = urlBase + 'v1/empresa';
     $.ajax({
         url: url,
         dataType: 'json',
@@ -24,7 +26,7 @@ function loadingData() {
 }
 
 async function excluirEmpresa(id) {
-    let url = "https://teste23424.herokuapp.com/v1/empresa/" + id;
+    let url = urlBase + "v1/empresa/" + id;
     $.ajax({
         url: url,
         dataType: 'json',
@@ -46,7 +48,7 @@ async function excluirEmpresa(id) {
 };
 
 async function adicionaEmpresa(nome, cnpj) {
-    let url = 'https://teste23424.herokuapp.com/v1/empresa';
+    let url = urlBase +  'v1/empresa';
     showLoadingInSendButton();
     $.ajax({
         url: url,
