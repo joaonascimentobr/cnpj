@@ -2,79 +2,28 @@
 const btEnviar = document.getElementById('btn_enviar');
 const spinner = document.getElementById('spinner');
 
+const nameInput = document.querySelector('#name');
+const cnpjInput = document.querySelector('#cnpj');
 
 async function addCnpj(event) {
     event.preventDefault();
     const td = document.querySelector('td');
-    const nameInput = document.querySelector('#name').value;
-    const cnpjInput = document.querySelector('#cnpj').value;
 
-    console.log(td);
-
-    await adicionaEmpresa(nameInput, cnpjInput);
+    await adicionaEmpresa(nameInput.value, cnpjInput.value);
 }
 
-async function adicionaEmpresa(nome, cnpj) {
+function mostrarToastSucesso() {
+  let toast = new bootstrap.Toast(document.getElementById('toastAddSucesso'));
+  toast.show()
+};
 
-// let dados = JSON.stringify({
-//   nome: nome,
-//   cnpj: cnpj
-// })
-// console.log("dados",dados);
+function showToastFail() {
+  let toast = new bootstrap.Toast(document.getElementById('toastAddFalha'));
+  toast.show()
+};
 
-//   $.ajax({
-//     url: 'https://teste23424.herokuapp.com/v1/empresa',
-//     type: "POST",
-//     data: dados,
-//     success: function(data) {
-//       mostrarToast();
-//       //2 etapa adicionar ao html na hora
-//       dados.push({nome:nome, id:id});
-//       console.log(dados);
-//       gerarTabela(dados);
-//     },
-//     error: function(jqXHR, textStatus, errorThrown) {
-      
-//       console.log(textStatus, errorThrown);
-//     }
-//   });
-
-  let hedears = {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json'
-    }, 
-    body: JSON.stringify({
-      nome: nome,
-      cnpj: cnpj,
-    })
-  };
-
-  fetch('https://teste23424.herokuapp.com/v1/empresa', hedears)
-  .then(response => {
-    response.json()
-    // response.json()
-    mostrarToast();
-    //2 etapa adicionar ao html na hora
-    dados.push({nome:nome, id:id});
-    console.log(dados);
-    gerarTabela(dados);
-  })
-  // .then(data => {
-  //   mostrarToast();
-  //   //2 etapa adicionar ao html na hora
-  //   dados.push({nome:nome, id:id});
-  //   console.log(dados);
-  //   gerarTabela(dados);
-  // })
-  .catch(error => {
-    console.error(error);
-  });
-}
-
-function mostrarToast() {
-  var toast = new bootstrap.Toast(document.getElementById('toast'))
-  
+function mostrarToastEmpresaExcluida() {
+  let toast = new bootstrap.Toast(document.getElementById('toastEmpresaExcluida'));
   toast.show()
 };
 
@@ -91,11 +40,9 @@ function gerarTabela(dados) {
       btnRemover.classList.add('btn', 'btn-danger', 'btn-sm');
       btnRemover.innerHTML = '<i class="fas fa-trash-alt"></i>';
       btnRemover.addEventListener('click', async () => {
-        let excluir = confirm("Tem certeza que deseja excluir?")
-        if (excluir) {
-          await excluirEmpresa(dados[i].id);
-           tr.remove();
-        }
+        btnRemover.innerHTML = '<span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>';
+        await removeCompany(dados[i].id, tr);
+        btnRemover.innerHTML = '<i class="fas fa-trash-alt"></i>';
       });
       tdCnpj.textContent = dados[i].cnpj;
       tdAcao.appendChild(btnRemover);
@@ -105,22 +52,31 @@ function gerarTabela(dados) {
       tbody.appendChild(tr);
     }
   };
-async function excluirEmpresa(id) {
-  try {
-    const response = await fetch("https://teste23424.herokuapp.com/v1/empresa/" + id, {method: "DELETE"});
-    const jsonData = await response.json();
-    console.log(jsonData);
-    dados = jsonData.data
-    console.log("foi")
-  } catch(error) {
-    console.log("deu merda")
+
+async function removeCompany(id, tr) {
+  let excluir = confirm("Tem certeza que deseja excluir?");
+  if (excluir) {
+    await excluirEmpresa(id);
+     tr.remove();
   }
 };
 
-// d-none
+function showLoadingInSendButton() {
+  spinner.classList.remove('d-none');
+  btEnviar.disabled = true;
+};
 
-spinner.classList.add("d-none");
+function hideLoadingInSendButton() {
+  console.log('hideloading');
+  spinner.classList.add("d-none");
+  btEnviar.disabled = false;
+};
 
-// spinnerLoading.classList.remove("d-none");
 
-console.log('sdfasdfasdfsdfasdfs')
+
+hideLoadingInSendButton();
+
+function clearForm() {
+  nameInput.value = '';
+  cnpjInput.value = '';
+};
