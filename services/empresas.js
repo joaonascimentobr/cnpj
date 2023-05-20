@@ -3,13 +3,13 @@ var dados = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
-    gerarTabela(dados);
     loadingData();
 });
 
 let urlBase = "https://empresas-w894.onrender.com/";
 
 function loadingData() {
+    loaingTable.classList.remove('d-none');
     let url = urlBase + 'v1/empresa';
     $.ajax({
         url: url,
@@ -21,7 +21,9 @@ function loadingData() {
             gerarTabela(dados);
         },
         error: function (jqXHR, textStatus, errorThrown) {},
-        complete: () => {}
+        complete: () => {
+            loaingTable.classList.add('d-none');
+        }
     });
 }
 
@@ -39,7 +41,7 @@ function excluirEmpresa(id, complete) {
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(textStatus, errorThrown);
         },
-        complete: () => {
+        complete: function() {
             hideLoadingInSendButton();
             complete();
         }

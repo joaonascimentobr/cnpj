@@ -3,6 +3,10 @@ const spinner = document.getElementById('spinner');
 
 const nameInput = document.querySelector('#name');
 const cnpjInput = document.querySelector('#cnpj');
+const tbody = document.querySelector('tbody');
+
+const noItens = document.getElementById('noItens');
+const loaingTable = document.getElementById('loaingTable');
 
 function addCnpj(event) {
     event.preventDefault();
@@ -25,9 +29,10 @@ function mostrarToastEmpresaExcluida() {
   toast.show()
 };
 
+
 function gerarTabela(dados) {
-    const tbody = document.querySelector('tbody');
     tbody.innerHTML = '';
+
     for (let i = 0; i < dados.length; i++) {
       const tr = document.createElement('tr');
       const tdNome = document.createElement('td');
@@ -50,6 +55,14 @@ function gerarTabela(dados) {
       tr.appendChild(tdCnpj);
       tr.appendChild(tdAcao);
       tbody.appendChild(tr);
+    }
+
+    if (dados.length == 0) {
+      console.log("entrou");
+      noItens.classList.remove('d-none')
+    } else {
+      noItens.classList.add("d-none");
+      console.log("nEntrou");
     }
   };
 
