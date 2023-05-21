@@ -13,7 +13,7 @@ function loadingData() {
     let url = urlBase + 'v1/empresa';
     $.ajax({
         url: url,
-        dataType: 'jsonp',
+        dataType: 'json',
         type: "GET",
         // contentType: 'application/json',
         success: function (response) {
@@ -31,7 +31,7 @@ function excluirEmpresa(id, complete) {
     let url = urlBase + "v1/empresa/" + id;
     $.ajax({
         url: url,
-        dataType: 'jsonp',
+        dataType: 'json',
         type: "DELETE",
         // contentType: 'application/json',
         success: function (data) {
@@ -53,7 +53,7 @@ function adicionaEmpresa(nome, cnpj) {
     showLoadingInSendButton();
     $.ajax({
         url: url,
-        dataType: 'jsonp',
+        dataType: 'json',
         type: "POST",
         // contentType: 'application/json',
         data: JSON.stringify({

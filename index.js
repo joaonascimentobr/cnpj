@@ -62,7 +62,6 @@ function gerarTabela(dados) {
       noItens.classList.remove('d-none');
     } else {
       noItens.classList.add("d-none");
-      console.log("nEntrou");
     }
   };
 
@@ -79,7 +78,6 @@ function showLoadingInSendButton() {
 };
 
 function hideLoadingInSendButton() {
-  console.log('hideloading');
   spinner.classList.add("d-none");
   btEnviar.disabled = false;
 };
