@@ -15,7 +15,7 @@ function loadingData() {
         url: url,
         dataType: 'json',
         type: "GET",
-        // contentType: 'application/json',
+        contentType: 'application/json',
         success: function (response) {
             dados = response.data;
             gerarTabela(dados);
@@ -33,7 +33,7 @@ function excluirEmpresa(id, complete) {
         url: url,
         dataType: 'json',
         type: "DELETE",
-        // contentType: 'application/json',
+        contentType: 'application/json',
         success: function (data) {
             mostrarToastEmpresaExcluida();
             loadingData();
@@ -55,7 +55,7 @@ function adicionaEmpresa(nome, cnpj) {
         url: url,
         dataType: 'json',
         type: "POST",
-        // contentType: 'application/json',
+        contentType: 'application/json',
         data: JSON.stringify({
             nome: nome,
             cnpj: cnpj
