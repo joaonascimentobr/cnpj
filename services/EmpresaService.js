@@ -41,16 +41,16 @@ export class EmpresaService {
             dataType: 'json',
             type: "DELETE",
             contentType: 'application/json',
-            success: function (data) {
+            success: (data) => {
                 success();
                 // this.mostrarToastEmpresaExcluida();
                 // this.loadingData();
             },
-            error: function (jqXHR, textStatus, errorThrown) {
+            error: (jqXHR, textStatus, errorThrown) => {
                 fail();
                 console.log(textStatus, errorThrown);
             },
-            complete: function() {
+            complete: () => {
                 // this.hideLoadingInSendButton();
                 completed();
             }
@@ -68,7 +68,7 @@ export class EmpresaService {
             contentType: 'application/json',
             data: JSON.stringify(empresa),
             success: function (data) {
-                success();
+                success(data.id);
                 // mostrarToastSucesso();
                 // dados.push({ nome: nome, cnpj: cnpj });
                 // gerarTabela(dados);

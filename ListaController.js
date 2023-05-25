@@ -15,23 +15,22 @@ export default class ListaController {
   dados = [];
 
     constructor() {
-
-      
-      // this.empresaService = new EmpresaService();
-      
-      // console.log("ListaController iniciou");
       this.addEventos();
       document.addEventListener('DOMContentLoaded', () => {
-        this.loaingTable.classList.remove('d-none');
-        this.empresaService.loadingData(
-          (data) => {
-            this.dados = data;
-            this.gerarTabela(data)
-          }
-        );
+        this.loadingData();
       });
   
       this.hideLoadingInSendButton();
+    }
+
+    loadingData() {
+      this.loaingTable.classList.remove('d-none');
+      this.empresaService.loadingData(
+        (data) => {
+          this.dados = data;
+          this.gerarTabela(data)
+        }
+      );
     }
 
     addEventos() {
@@ -52,18 +51,18 @@ export default class ListaController {
         // console.log("sdfasdf", this.empresaService);
         // const td = document.querySelector('td');
         this.showLoadingInSendButton();
-        let empresa = {nome: this.nameInput.value, cnpj: this.cnpjInput.value}
+        let empresa = {nome: this.nameInput.value, cnpj: this.cnpjInput.value};
         this.empresaService.adicionaEmpresa(empresa,
-          () => {
+          (id) => {
             this.mostrarToastSucesso();
-            this.dados.push(empresa);
-            this.gerarTabela(this.dados);
+            this.loadingData();
             this.clearForm();
           },
           () => {
             this.showToastFail();
           },
           () => {
+            // console.log("add completou");
             this.hideLoadingInSendButton();
           }
           );
@@ -87,7 +86,6 @@ export default class ListaController {
     
     gerarTabela(dados) {
         this.tbody.innerHTML = '';
-    
         for (let i = 0; i < dados.length; i++) {
           const tr = document.createElement('tr');
           const tdNome = document.createElement('td');
@@ -103,11 +101,14 @@ export default class ListaController {
               dados[i].id, 
               () => {//sucess
                 this.mostrarToastEmpresaExcluida();
-                btnRemover.innerHTML = '<i class="fas fa-trash-alt"></i>';
                 tr.remove()
               },
-              () => {},
-              () => {}
+              () => {
+                
+              },
+              () => {
+                btnRemover.innerHTML = '<i class="fas fa-trash-alt"></i>';
+              }
             );
           });
           tdCnpj.textContent = dados[i].cnpj;
