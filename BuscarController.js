@@ -2,7 +2,7 @@
 import { EmpresaService } from "./services/EmpresaService.js";
 
 const botao = document.getElementById('meuBotao');
-const inputCNPJ = document.getElementById('nome');
+const inputCNPJ = document.getElementById('cnpj');
 const resultado = document.getElementById("resultado");
 const spinner = document.getElementById('spinner');
 
