@@ -1,5 +1,5 @@
 // require('empresas.js')
-import {Teste} from './EmpresaService.js';
+import {Teste} from './services/EmpresaService.js';
 
 
 function validarCNPJ() {
@@ -18,6 +18,3 @@ function validarCNPJ() {
   () => {})
 }
 
-$(document).ready(function() {
-  $('#cnpj').mask('00.000.000/0000-00');
-});

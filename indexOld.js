@@ -1,55 +1,107 @@
 
+// import { EmpresaService } from "./EmpresaService.js";
+
+// require('ListaController.js');
+// let listaController = new ListaController();
+
+// const btEnviar = document.getElementById('btn_enviar');
+// const spinner = document.getElementById('spinner');
+
+// const nameInput = document.querySelector('#name');
+// const cnpjInput = document.querySelector('#cnpj');
+// const tbody = document.querySelector('tbody');
+// const loaingTable = document.getElementById('loaingTable');
+
+// const empresaService = new EmpresaService();
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   loadingData();
+//   // empresaService.loadingData();
+// });
 
 
+// const noItens = document.getElementById('noItens');
+
+// function addCnpj(event) {
+//     event.preventDefault();
+//     console.log("sdfasdf");
+//     // const td = document.querySelector('td');
+//     // listaController.addCnpj(event)
+//     // adicionaEmpresa(nameInput.value, cnpjInput.value);
+// }
+
+// function mostrarToastSucesso() {
+//   let toast = new bootstrap.Toast(document.getElementById('toastAddSucesso'));
+//   toast.show()
+// };
+
+// function showToastFail() {
+//   let toast = new bootstrap.Toast(document.getElementById('toastAddFalha'));
+//   toast.show()
+// };
+
+// function mostrarToastEmpresaExcluida() {
+//   let toast = new bootstrap.Toast(document.getElementById('toastEmpresaExcluida'));
+//   toast.show()
+// };
 
 
+// export function gerarTabela(dados) {
+//     tbody.innerHTML = '';
 
-    // import firebase from "firebase/app";
-    // import "firebase/database";
+//     for (let i = 0; i < dados.length; i++) {
+//       const tr = document.createElement('tr');
+//       const tdNome = document.createElement('td');
+//       tdNome.innerHTML = dados[i].nome;
+//       const tdCnpj = document.createElement('td');
+//       const tdAcao = document.createElement('td');
+//       const btnRemover = document.createElement('button');
+//       btnRemover.classList.add('btn', 'btn-danger', 'btn-sm');
+//       btnRemover.innerHTML = '<i class="fas fa-trash-alt"></i>';
+//       btnRemover.addEventListener('click', async () => {
+//         btnRemover.innerHTML = '<span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>';
+//         removeCompany(dados[i].id, tr, () => {
+//           btnRemover.innerHTML = '<i class="fas fa-trash-alt"></i>';
+//           tr.remove()
+//         });
+//       });
+//       tdCnpj.textContent = dados[i].cnpj;
+//       tdAcao.appendChild(btnRemover);
+//       tr.appendChild(tdNome);
+//       tr.appendChild(tdCnpj);
+//       tr.appendChild(tdAcao);
+//       tbody.appendChild(tr);
+//     }
 
-    // // Import the functions you need from the SDKs you need
-    // // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
-    // // import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+//     if (dados.length == 0) {
+//       console.log("entrou");
+//       noItens.classList.remove('d-none');
+//     } else {
+//       noItens.classList.add("d-none");
+//     }
+//   };
 
-    // // const initializeApp = require("nofirebase/app");
-    // // TODO: Add SDKs for Firebase products that you want to use
-    // // https://firebase.google.com/docs/web/setup#available-libraries
+// function removeCompany(id, tr, complete) {
+//   let excluir = confirm("Tem certeza que deseja excluir?");
+//   if (excluir) {
+//     excluirEmpresa(id, complete);
+//   }
+// };
 
-    // // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
-    // // import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.21.0/firebase-analytics.js'
+// function showLoadingInSendButton() {
+//   spinner.classList.remove('d-none');
+//   btEnviar.disabled = true;
+// };
 
-    // // Add Firebase products that you want to use
-    // // import { getAuth } from 'https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js'
-    // // import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js'
-  
-    // // Your web app's Firebase configuration
-    // const firebaseConfig = {
-    //   apiKey: "AIzaSyDHZl6MrYWJDfkwz1NLhOt5wXhSNzW_oA0",
-    //   authDomain: "valida-cnpj.firebaseapp.com",
-    //   databaseURL: "https://valida-cnpj-default-rtdb.firebaseio.com",
-    //   projectId: "valida-cnpj",
-    //   storageBucket: "valida-cnpj.appspot.com",
-    //   messagingSenderId: "446297080353",
-    //   appId: "1:446297080353:web:b4927f5fdc0ca5941e1960"
-    // };
-  
-    // // Initialize Firebase
-    // const app = initializeApp(firebaseConfig);
+// function hideLoadingInSendButton() {
+//   spinner.classList.add("d-none");
+//   btEnviar.disabled = false;
+// };
 
-    // const database = getDatabase(app);
+// hideLoadingInSendButton();
 
-    // // database.ref('users/1').set({
-    // //     name: 'João',
-    // //     age: 30,
-    // //     email: 'joao@example.com'
-    // // });
-    // function writeUserData(userId, name, email, imageUrl) {
-    //     const db = getDatabase();
-    //     set(ref(db, 'users/' + userId), {
-    //         username: name,
-    //         email: email,
-    //         profile_picture : imageUrl
-    //     });
-    // }
+// function clearForm() {
+//   nameInput.value = '';
+//   cnpjInput.value = '';
+// };
 
-    // writeUserData(1,"joao", "joao@joao.com","")

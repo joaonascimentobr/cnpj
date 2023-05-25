@@ -1,5 +1,5 @@
 
-import { EmpresaService } from "./EmpresaService.js";
+import { EmpresaService } from "./services/EmpresaService.js";
 
 const botao = document.getElementById('meuBotao');
 const inputCNPJ = document.getElementById('nome');
@@ -37,3 +37,7 @@ function showSpinner() {
 function hideSpinner() {
     spinner.classList.add('d-none');
 }
+
+$(document).ready(function() {
+    $('#nome').mask('00.000.000/0000-00');
+});

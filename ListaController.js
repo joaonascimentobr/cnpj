@@ -1,4 +1,4 @@
-import { EmpresaService } from "./EmpresaService.js";
+import { EmpresaService } from "./services/EmpresaService.js";
 
 export default class ListaController {
   empresaService = new EmpresaService();
@@ -15,6 +15,8 @@ export default class ListaController {
   dados = [];
 
     constructor() {
+
+      
       // this.empresaService = new EmpresaService();
       
       // console.log("ListaController iniciou");
@@ -37,6 +39,10 @@ export default class ListaController {
         event.preventDefault();
         this.addCnpj(event);
       });
+
+      $(document).ready(() => {
+        $('#cnpj').mask('00.000.000/0000-00');
+    });
     }
 
     
@@ -142,5 +148,7 @@ export default class ListaController {
       this.cnpjInput.value = '';
     };
   }
+
+
 
   const listaController = new ListaController();
