@@ -1,90 +1,107 @@
-const btEnviar = document.getElementById('btn_enviar');
-const spinner = document.getElementById('spinner');
 
-const nameInput = document.querySelector('#name');
-const cnpjInput = document.querySelector('#cnpj');
-const tbody = document.querySelector('tbody');
+// import { EmpresaService } from "./EmpresaService.js";
 
-const noItens = document.getElementById('noItens');
-const loaingTable = document.getElementById('loaingTable');
+// require('ListaController.js');
+// let listaController = new ListaController();
 
-function addCnpj(event) {
-    event.preventDefault();
-    const td = document.querySelector('td');
-    adicionaEmpresa(nameInput.value, cnpjInput.value);
-}
+// const btEnviar = document.getElementById('btn_enviar');
+// const spinner = document.getElementById('spinner');
 
-function mostrarToastSucesso() {
-  let toast = new bootstrap.Toast(document.getElementById('toastAddSucesso'));
-  toast.show()
-};
+// const nameInput = document.querySelector('#name');
+// const cnpjInput = document.querySelector('#cnpj');
+// const tbody = document.querySelector('tbody');
+// const loaingTable = document.getElementById('loaingTable');
 
-function showToastFail() {
-  let toast = new bootstrap.Toast(document.getElementById('toastAddFalha'));
-  toast.show()
-};
+// const empresaService = new EmpresaService();
 
-function mostrarToastEmpresaExcluida() {
-  let toast = new bootstrap.Toast(document.getElementById('toastEmpresaExcluida'));
-  toast.show()
-};
+// document.addEventListener('DOMContentLoaded', () => {
+//   loadingData();
+//   // empresaService.loadingData();
+// });
 
 
-function gerarTabela(dados) {
-    tbody.innerHTML = '';
+// const noItens = document.getElementById('noItens');
 
-    for (let i = 0; i < dados.length; i++) {
-      const tr = document.createElement('tr');
-      const tdNome = document.createElement('td');
-      tdNome.innerHTML = dados[i].nome;
-      const tdCnpj = document.createElement('td');
-      const tdAcao = document.createElement('td');
-      const btnRemover = document.createElement('button');
-      btnRemover.classList.add('btn', 'btn-danger', 'btn-sm');
-      btnRemover.innerHTML = '<i class="fas fa-trash-alt"></i>';
-      btnRemover.addEventListener('click', async () => {
-        btnRemover.innerHTML = '<span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>';
-        removeCompany(dados[i].id, tr, () => {
-          btnRemover.innerHTML = '<i class="fas fa-trash-alt"></i>';
-          tr.remove()
-        });
-      });
-      tdCnpj.textContent = dados[i].cnpj;
-      tdAcao.appendChild(btnRemover);
-      tr.appendChild(tdNome);
-      tr.appendChild(tdCnpj);
-      tr.appendChild(tdAcao);
-      tbody.appendChild(tr);
-    }
+// function addCnpj(event) {
+//     event.preventDefault();
+//     console.log("sdfasdf");
+//     // const td = document.querySelector('td');
+//     // listaController.addCnpj(event)
+//     // adicionaEmpresa(nameInput.value, cnpjInput.value);
+// }
 
-    if (dados.length == 0) {
-      console.log("entrou");
-      noItens.classList.remove('d-none');
-    } else {
-      noItens.classList.add("d-none");
-    }
-  };
+// function mostrarToastSucesso() {
+//   let toast = new bootstrap.Toast(document.getElementById('toastAddSucesso'));
+//   toast.show()
+// };
 
-function removeCompany(id, tr, complete) {
-  let excluir = confirm("Tem certeza que deseja excluir?");
-  if (excluir) {
-    excluirEmpresa(id, complete);
-  }
-};
+// function showToastFail() {
+//   let toast = new bootstrap.Toast(document.getElementById('toastAddFalha'));
+//   toast.show()
+// };
 
-function showLoadingInSendButton() {
-  spinner.classList.remove('d-none');
-  btEnviar.disabled = true;
-};
+// function mostrarToastEmpresaExcluida() {
+//   let toast = new bootstrap.Toast(document.getElementById('toastEmpresaExcluida'));
+//   toast.show()
+// };
 
-function hideLoadingInSendButton() {
-  spinner.classList.add("d-none");
-  btEnviar.disabled = false;
-};
 
-hideLoadingInSendButton();
+// export function gerarTabela(dados) {
+//     tbody.innerHTML = '';
 
-function clearForm() {
-  nameInput.value = '';
-  cnpjInput.value = '';
-};
+//     for (let i = 0; i < dados.length; i++) {
+//       const tr = document.createElement('tr');
+//       const tdNome = document.createElement('td');
+//       tdNome.innerHTML = dados[i].nome;
+//       const tdCnpj = document.createElement('td');
+//       const tdAcao = document.createElement('td');
+//       const btnRemover = document.createElement('button');
+//       btnRemover.classList.add('btn', 'btn-danger', 'btn-sm');
+//       btnRemover.innerHTML = '<i class="fas fa-trash-alt"></i>';
+//       btnRemover.addEventListener('click', async () => {
+//         btnRemover.innerHTML = '<span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>';
+//         removeCompany(dados[i].id, tr, () => {
+//           btnRemover.innerHTML = '<i class="fas fa-trash-alt"></i>';
+//           tr.remove()
+//         });
+//       });
+//       tdCnpj.textContent = dados[i].cnpj;
+//       tdAcao.appendChild(btnRemover);
+//       tr.appendChild(tdNome);
+//       tr.appendChild(tdCnpj);
+//       tr.appendChild(tdAcao);
+//       tbody.appendChild(tr);
+//     }
+
+//     if (dados.length == 0) {
+//       console.log("entrou");
+//       noItens.classList.remove('d-none');
+//     } else {
+//       noItens.classList.add("d-none");
+//     }
+//   };
+
+// function removeCompany(id, tr, complete) {
+//   let excluir = confirm("Tem certeza que deseja excluir?");
+//   if (excluir) {
+//     excluirEmpresa(id, complete);
+//   }
+// };
+
+// function showLoadingInSendButton() {
+//   spinner.classList.remove('d-none');
+//   btEnviar.disabled = true;
+// };
+
+// function hideLoadingInSendButton() {
+//   spinner.classList.add("d-none");
+//   btEnviar.disabled = false;
+// };
+
+// hideLoadingInSendButton();
+
+// function clearForm() {
+//   nameInput.value = '';
+//   cnpjInput.value = '';
+// };
+

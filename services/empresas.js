@@ -1,10 +1,10 @@
+// import { iniciojs } from '../index.js';
+
+
 var dados = [
     { nome: "Carregando empresas...", cnpj: '' }
 ];
 
-document.addEventListener('DOMContentLoaded', () => {
-    loadingData();
-});
 
 let urlBase = "https://empresas-w894.onrender.com/";
 
@@ -71,6 +71,26 @@ function adicionaEmpresa(nome, cnpj) {
         },
         complete: function() {
             hideLoadingInSendButton();
+        }
+    });
+}
+
+export function searchCNPJ(cnpj, success, fail, completed) {
+    let url = urlBase + 'v1/empresa' + '?q=' + cnpj;
+    $.ajax({
+        url: url,
+        dataType: 'json',
+        type: "GET",
+        contentType: 'application/json',
+        success: function (response) {
+            console.log(response.data);
+            success(response.data.data);
+            // dados = response.data;
+            // gerarTabela(dados);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {},
+        complete: () => {
+            // loaingTable.classList.add('d-none');
         }
     });
 }
