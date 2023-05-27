@@ -48,8 +48,6 @@ export default class ListaController {
     
     addCnpj(event) {
         // event.preventDefault();
-        // console.log("sdfasdf", this.empresaService);
-        // const td = document.querySelector('td');
         this.showLoadingInSendButton();
         let empresa = {nome: this.nameInput.value, cnpj: this.cnpjInput.value};
         this.empresaService.adicionaEmpresa(empresa,
@@ -62,7 +60,6 @@ export default class ListaController {
             this.showToastFail();
           },
           () => {
-            // console.log("add completou");
             this.hideLoadingInSendButton();
           }
           );

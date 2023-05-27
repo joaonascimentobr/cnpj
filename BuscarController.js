@@ -16,9 +16,9 @@ botao.onclick = function() {
         (data) => {
             let array = data.filter(item => item.cnpj == inputCNPJ.value);
             if (array.length > 0) {
-                resultado.innerHTML = "Foi encontrado a empresa " + data[0].nome;
+                resultado.innerHTML = "A empresa se encontra em dia.";
             } else {
-                resultado.innerHTML = "Não há empresa cadastrada com este CNPJ";
+                resultado.innerHTML = "A empresa encontra-se atrasada.";
             }
         },
         () => {
@@ -39,5 +39,5 @@ function hideSpinner() {
 }
 
 $(document).ready(function() {
-    $('#nome').mask('00.000.000/0000-00');
+    $('#cnpj').mask('00.000.000/0000-00');
 });
