@@ -1,4 +1,4 @@
-import { EmpresaService } from "./services/EmpresaService.js";
+import { EmpresaService } from "../services/EmpresaService.js";
 
 export default class ListaController {
   empresaService = new EmpresaService();
