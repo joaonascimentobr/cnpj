@@ -6,12 +6,12 @@ const inputCNPJ = document.getElementById('cnpj');
 const resultado = document.getElementById("resultado");
 const spinner = document.getElementById('spinner');
 
-const minhaInstancia = new EmpresaService();
+const empresaService = new EmpresaService();
 
 botao.onclick = function() {
     showSpinner();
     resultado.innerHTML = "";
-    minhaInstancia.searchCNPJ(
+    empresaService.searchCNPJ(
         inputCNPJ.value,
         (data) => {
             let array = data.filter(item => item.cnpj == inputCNPJ.value);
@@ -41,3 +41,9 @@ function hideSpinner() {
 $(document).ready(function() {
     $('#cnpj').mask('00.000.000/0000-00');
 });
+
+function toWakeUpServer() {
+    empresaService.loadingData();
+};
+
+toWakeUpServer();
