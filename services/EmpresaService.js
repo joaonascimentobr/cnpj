@@ -15,7 +15,6 @@ export class EmpresaService {
     // }
 
     loadingData(success, fail, completed) {
-        // loaingTable.classList.remove('d-none');
         let url = this.urlBase + 'v1/empresa';
         $.ajax({
             url: url,
@@ -28,9 +27,7 @@ export class EmpresaService {
                 // Comeco.gerarTabela(this.dados);
             },
             error: function (jqXHR, textStatus, errorThrown) {},
-            complete: () => {
-                loaingTable.classList.add('d-none');
-            }
+            complete: () => {}
         });
     }
     
