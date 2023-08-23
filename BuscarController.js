@@ -10,6 +10,7 @@ const spinner = document.getElementById('spinner');
 
 const empresaService = new EmpresaService();
 const pdfService = new PdfService();
+globalThis.pdfService = pdfService;
 
 botao.onclick = function() {
     showSpinner();
@@ -76,3 +77,7 @@ function mostrarLista() {
 }
 toWakeUpServer();
 mostrarLista();
+
+function changeCity() {
+    console.log("fdp")
+}

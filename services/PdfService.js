@@ -9,8 +9,10 @@ export default class EmpresaService {
     }
 
     obterListaNomesArquivos() {
+        let selectedCity = $('#city').val();
+        console.log("ddddddddddddd", selectedCity);;
         const oldThis = this;
-        fetch('https://sindetursp.com.br/sistema/pdfs.php')
+        fetch(`https://sindetursp.com.br/sistema/pdfs.php?city=${selectedCity}`)
         .then((response) => {
             return response.json();
         })
@@ -49,7 +51,7 @@ export default class EmpresaService {
     }
     
     inserirTextoLista(txt) {
-        console.log("passo aqui");
+        // console.log("passo aqui");
         var elemento = $("#listaPdfs");
         let html = this.gerarHtmlLista(txt);
         console.log(elemento);
@@ -71,7 +73,12 @@ export default class EmpresaService {
         let elemento = $("#listaCity");
         let html = this.gerarHtmSelect(txt);
         console.log(elemento);
+        console.log("sdfgdfgdfgdfg");
         elemento[0].innerHTML = html;
+        // elemento[0].onchange = this.changeCity;
+        // elemento[0].onchange = function() {
+        //     changeCity();;;
+        // }
     }
 
     gerarHtmSelect(array) {
@@ -79,7 +86,7 @@ export default class EmpresaService {
             throw new Error("O argumento deve ser um array.");
         }
       
-        let html = "<select name=cars' id='cars'>";
+        let html = "<select name=city id='city' onchange='globalThis.pdfService.changeCity()'>";
         let baseUrl = "https://sindetursp.com.br/";
         array.forEach((item) => {
           html += `<option value="${item}">${item}</option>`;
@@ -88,6 +95,10 @@ export default class EmpresaService {
         html += "</select>";
       
         return html;
+    }
+
+    changeCity() {
+        this.obterListaNomesArquivos();
     }
 
     // <select name="cars" id="cars">
