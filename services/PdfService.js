@@ -1,4 +1,5 @@
 export default class EmpresaService {
+
     constructor() {
         // console.log("foi kkkkk");
     }
@@ -38,15 +39,15 @@ export default class EmpresaService {
         }
       
         let html = "<ul>";
-        let baseUrl = "https://sindetursp.com.br/";
+        let baseUrl = "https://sindetursp.com.br";
+        let selectedCity = $('#city').val();
         array.forEach((item) => {
           html += `<li>
-          <a href="${baseUrl}/sistema/aracatuba/${item}">PDF - ${item}</a>
+          <a href="${baseUrl}/sistema/pdf/${selectedCity}/${item}">PDF - ${item}</a>
           </li>`;
         });
       
         html += "</ul>";
-      
         return html;
     }
     
@@ -57,8 +58,6 @@ export default class EmpresaService {
         console.log(elemento);
         elemento[0].innerHTML = html;
     }
-
-    // select
 
     obterListaNomesCidades() {
         const oldThis = this;
@@ -72,23 +71,16 @@ export default class EmpresaService {
     inserirTextoSelect(txt) {
         let elemento = $("#listaCity");
         let html = this.gerarHtmSelect(txt);
-        console.log(elemento);
-        console.log("sdfgdfgdfgdfg");
         elemento[0].innerHTML = html;
-        // elemento[0].onchange = this.changeCity;
-        // elemento[0].onchange = function() {
-        //     changeCity();;;
-        // }
     }
 
     gerarHtmSelect(array) {
         if (!Array.isArray(array)) {
             throw new Error("O argumento deve ser um array.");
         }
-      
-        let html = "<select name=city id='city' onchange='globalThis.pdfService.changeCity()'>";
-        let baseUrl = "https://sindetursp.com.br/";
-        array.forEach((item) => {
+        let html = "<label>Escolha a cidade da qual deseja ver o termo:</label><select name=city id='city' onchange='globalThis.pdfService.changeCity()'>";
+        let cidades = ['selecione'].concat(array);
+        cidades.forEach((item) => {
           html += `<option value="${item}">${item}</option>`;
         });
       

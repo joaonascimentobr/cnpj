@@ -21,6 +21,7 @@ botao.onclick = function() {
             let array = data.filter(item => item.cnpj == inputCNPJ.value);
             if (array.length > 0) {
                 resultado.innerHTML = "A empresa se encontra em dia.";
+                mostrarLista();
             } else {
                 resultado.innerHTML = "A empresa encontra-se atrasada.";
             }
@@ -76,7 +77,6 @@ function mostrarLista() {
     pdfService.start();
 }
 toWakeUpServer();
-mostrarLista();
 
 function changeCity() {
     console.log("fdp")
