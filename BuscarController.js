@@ -1,6 +1,5 @@
 
 import { EmpresaService } from "./services/EmpresaService.js";
-import myJson from './json.json' assert {type: 'json'};
 import PdfService from "./services/PdfService.js";
 
 const botao = document.getElementById('meuBotao');

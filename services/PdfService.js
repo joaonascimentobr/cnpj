@@ -1,3 +1,5 @@
+import cidades from '../cidades.json' assert { type: "json" };
+
 export default class EmpresaService {
 
     constructor() {
@@ -5,22 +7,22 @@ export default class EmpresaService {
     }
 
     start() {
-        this.obterListaNomesArquivos();
+        // this.obterListaNomesArquivos();
         this.obterListaNomesCidades();
     }
 
-    obterListaNomesArquivos() {
+    obterListaNomesArquivos() { // agr vai mostrar o link do arquivo
         let selectedCity = $('#city').val();
         console.log("ddddddddddddd", selectedCity);;
         const oldThis = this;
-        fetch(`https://sindetursp.com.br/sistema/pdfs.php?city=${selectedCity}`)
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            console.log(data)
-            this.inserirTextoLista(data)
-        });
+        // fetch(`https://sindetursp.com.br/sistema/pdfs.php?city=${selectedCity}`)
+        // .then((response) => {
+        //     return response.json();
+        // })
+        // .then((data) => {
+        //     console.log(data)
+            this.inserirTextoLista()
+        // });
         // .then(function(response) {
         //     // let res = JSON.parse(response);
         //     console.log("lll",response.text());
@@ -34,25 +36,32 @@ export default class EmpresaService {
     }
 
     gerarHtmlLista(array) {
-        if (!Array.isArray(array)) {
-          throw new Error("O argumento deve ser um array.");
-        }
+        // if (!Array.isArray(array)) {
+        //   throw new Error("O argumento deve ser um array.");
+        // }
       
         let html = "<ul>";
-        let baseUrl = "https://sindetursp.com.br";
+        // let baseUrl = "https://sindetursp.com.br";
         let selectedCity = $('#city').val();
-        array.forEach((item) => {
+        //<a href="${baseUrl}/sistema/pdf/${selectedCity}/${item}">PDF - ${item}</a>
+
+        let selectedCity2 = $('#city').val();
+        let nomePdf = cidades[selectedCity2];
+        console.log("nome da poha do pdf", nomePdf);
+        let baseUrl = "https://sindetursp.com.br/sistema/Npdfs"
+        // https://sindetursp.com.br/sistema/Npdfs/
+        // array.forEach((item) => {
           html += `<li>
-          <a href="${baseUrl}/sistema/pdf/${selectedCity}/${item}">PDF - ${item}</a>
+          <a href="${baseUrl}/${nomePdf}">PDF</a>
           </li>`;
-        });
+        // });
       
         html += "</ul>";
         return html;
     }
     
     inserirTextoLista(txt) {
-        // console.log("passo aqui");
+        console.log("passo aqui");
         var elemento = $("#listaPdfs");
         let html = this.gerarHtmlLista(txt);
         console.log(elemento);
@@ -75,12 +84,10 @@ export default class EmpresaService {
     }
 
     gerarHtmSelect(array) {
-        if (!Array.isArray(array)) {
-            throw new Error("O argumento deve ser um array.");
-        }
         let html = "<label>Escolha a cidade da qual deseja ver o termo:</label><select name=city id='city' onchange='globalThis.pdfService.changeCity()'>";
-        let cidades = ['selecione'].concat(array);
-        cidades.forEach((item) => {
+        // let cidades = ['selecione'].concat(array);
+        let cidadesKeys = Object.keys(cidades);
+        cidadesKeys.forEach((item) => {
           html += `<option value="${item}">${item}</option>`;
         });
       
