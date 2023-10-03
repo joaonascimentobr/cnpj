@@ -1,4 +1,4 @@
-import cidades from '../json.json' assert { type: "json" };
+import cidades from '../cidades.json' assert { type: "json" };
 
 export default class EmpresaService {
 
