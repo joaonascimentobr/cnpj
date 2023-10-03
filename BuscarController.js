@@ -22,7 +22,7 @@ botao.onclick = function() {
                 resultado.innerHTML = "A empresa se encontra em dia.";
                 mostrarLista();
             } else {
-                resultado.innerHTML = "A empresa encontra-se atrasada.";
+                resultado.innerHTML = "A empresa encontra-se com pendência junto ao Sindetur-SP.";
                 removerLista();
             }
         },
