@@ -23,6 +23,7 @@ botao.onclick = function() {
                 mostrarLista();
             } else {
                 resultado.innerHTML = "A empresa encontra-se atrasada.";
+                removerLista();
             }
         },
         () => {
@@ -73,8 +74,14 @@ function toWakeUpServer() {
 //   }
 
 function mostrarLista() {
+    $("#listaCity").show();
     pdfService.start();
 }
+
+function removerLista() {
+    $("#listaCity").hide();
+}
+
 toWakeUpServer();
 
 function changeCity() {
