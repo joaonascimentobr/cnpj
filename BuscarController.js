@@ -75,11 +75,14 @@ function toWakeUpServer() {
 
 function mostrarLista() {
     $("#listaCity").show();
+    $("#listaPdfs").show();
+    listaPdfs
     pdfService.start();
 }
 
 function removerLista() {
     $("#listaCity").hide();
+    $("#listaPdfs").hide();
 }
 
 toWakeUpServer();
