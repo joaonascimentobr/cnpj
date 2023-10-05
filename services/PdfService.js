@@ -84,8 +84,7 @@ export default class EmpresaService {
     }
 
     gerarHtmSelect(array) {
-        let html = "<label>Escolha a cidade da qual deseja ver o termo:</label><select name=city id='city' onchange='globalThis.pdfService.changeCity()'>";
-        // let cidades = ['selecione'].concat(array);
+        let html = "<label>Escolha a cidade da qual deseja ver a convenção:</label><select name=city id='city' onchange='globalThis.pdfService.changeCity()'>";
         let cidadesKeys = Object.keys(cidades);
         cidadesKeys.forEach((item) => {
           html += `<option value="${item}">${item}</option>`;
