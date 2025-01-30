@@ -7,4 +7,4 @@ O repositório está atualizado?
 O Felipe fez alterações diretas nos arquivos do servidor para atender novas demandas do cliente.
 
 Como esse projeto funciona?
-Ele foi construido usando HTML, Bootstrap e JS (EM6)
+Ele foi construido usando HTML, Bootstrap e JS (EM6).
