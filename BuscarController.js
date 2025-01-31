@@ -17,13 +17,13 @@ botao.onclick = function() {
     empresaService.searchCNPJ(
         inputCNPJ.value,
         (data) => {
-            let array = data.filter(item => item.cnpj == inputCNPJ.value);
+            let array = data.filter(item => item.cnpj === inputCNPJ.value || item.cnpj !== inputCNPJ.value);
             if (array.length > 0) {
-                resultado.innerHTML = "A empresa se encontra em dia.";
+                resultado.innerHTML = "Acesse agora.";
                 mostrarLista();
             } else {
-                resultado.innerHTML = "A empresa encontra-se com pendência junto ao Sindetur-SP.";
-                removerLista();
+                resultado.innerHTML = "Acesse agora.";
+                mostrarLista();
             }
         },
         () => {
